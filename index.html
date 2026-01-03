@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Bánh Ngọt Ngào</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Tiệm Bánh Bà 9</h1>
+            <p>Hương vị nhà làm - Đậm đà tình cảm</p>
+            <a href="#menu" class="btn-primary">Đặt Bánh Ngay</a>
+        </div>
+        
+        <div class="cart-icon" onclick="xemGioHang()">
+            🛒 <span id="so-luong-gio">0</span>
+        </div>
+    </header>
+
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Thực đơn hôm nay</h2>
+            
+            <div class="product-grid" id="khung-san-pham"></div>
+
+            <div class="pagination" id="bo-phan-trang"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Tiệm Bánh Bà 9. Ship hàng toàn quốc.</p>
+    </footer>
+
+    <a href="https://zalo.me/0909xxxxxx" target="_blank" class="zalo-floating-btn">
+        <img src="images\Icon_of_Zalo.svg.png" alt="Chat Zalo">
+    </a>
+
+    <div id="modal-gio-hang" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="dongGioHang()">&times;</span>
+            <h2>Giỏ Hàng Của Bạn</h2>
+            
+            <div id="chi-tiet-gio-hang">
+                </div>
+
+            <div class="cart-total">
+                <h3>Tổng cộng: <span id="tong-tien">0</span>đ</h3>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="dongGioHang()">Tiếp tục xem</button>
+                <button class="btn-primary" onclick="thanhToanZalo()">Chốt đơn qua Zalo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
