@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiệm Bánh Cô 9</title>
+    <title>Bếp Cô 9</title>
+    <link rel="icon" type="image/png" href="images/bep-co-9.jpg">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Bếp Cô 9 - Hương vị nhà làm">
+    <meta property="og:description" content="Đặt bánh online nhanh chóng, giao hàng tận nơi.">
+    <meta property="og:image" content="bep-co-9.jpg">
 </head>
 <body>
 
     <header>
         <div class="container">
-            <h1>Tiệm Bánh Cô 9</h1>
+            <h1>Bếp Cô 9</h1>
             <p>Hương vị nhà làm - Đậm đà tình cảm</p>
             <a href="#menu" class="btn-primary">Đặt Bánh Ngay</a>
         </div>
@@ -19,6 +24,23 @@
             🛒 <span id="so-luong-gio">0</span>
         </div>
     </header>
+
+    <section class="signature-section">
+    <div class="container">
+        <h2 class="signature-title">🌟 Món Ăn Đặc Sản (Signature) 🌟</h2>
+        <div class="signature-card">
+            <div class="signature-img" style="background-color: #e6b800;">
+                <span>Bánh Bò Thốt Nốt</span>
+            </div>
+            <div class="signature-info">
+                <h3>Bánh Bò Thốt Nốt</h3>
+                <p>Món bánh làm nên thương hiệu Bếp Cô 9. Bánh mềm dai, thơm nức mùi thốt nốt vùng Bảy Núi, vị ngọt thanh tao không thể cưỡng lại.</p>
+                <span class="price">55.000đ</span>
+                <button class="btn-order signature-btn" onclick="themVaoGio('Bánh Bò Thốt Nốt', 55000)">Thêm vào giỏ hàng ngay</button>
+            </div>
+        </div>
+    </div>
+</section>
 
     <section id="menu" class="menu-section">
         <div class="container">
@@ -44,38 +66,45 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Tiệm Bánh Cô 9</h3>
+                    <h3>Bếp Cô 9</h3>
                     <p>"Trao gửi yêu thương qua từng chiếc bánh."</p>
                 </div>
             </div>
             <hr>
-            <p class="copyright">&copy; 2026 Tiệm Bánh Cô 9</p>
+            <p class="copyright">&copy; 2026 Bếp Cô 9</p>
         </div>
     </footer>
 
     <a href="https://zalo.me/0908169853" target="_blank" class="zalo-floating-btn">
-        <img src="Icon_of_Zalo.svg.png" alt="Chat Zalo">
+        <img src="images/Icon_of_Zalo.svg.png" alt="Chat Zalo">
     </a>
 
     <div id="modal-gio-hang" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Giỏ Hàng Của Bạn</h2>
-                <span class="close-btn" onclick="dongGioHang()">&times;</span>
-            </div>
-            
-            <div id="chi-tiet-gio-hang"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Giỏ Hàng Của Bạn</h2>
+            <span id="nut-dong-gio" class="close-btn" onclick="dongGioHang()">&times;</span>
+        </div>
+        
+        <div id="chi-tiet-gio-hang"></div>
 
-            <div class="cart-total">
-                <h3>Tổng cộng: <span id="tong-tien">0</span>đ</h3>
-            </div>
+        <div class="cart-total">
+            <h3>Tổng cộng: <span id="tong-tien">0</span>đ</h3>
+        </div>
 
-            <div class="modal-actions">
-                <button class="btn-secondary" onclick="dongGioHang()">Tiếp tục xem</button>
-                <button class="btn-primary" onclick="thanhToanZalo()">Chốt đơn qua Zalo</button>
-            </div>
+        <div id="actions-mac-dinh" class="modal-actions">
+            <button class="btn-secondary" onclick="dongGioHang()">Tiếp tục xem</button>
+            <button class="btn-primary" onclick="thanhToanZalo()">Chốt đơn qua Zalo</button>
+        </div>
+
+        <div id="actions-chup-anh" class="modal-actions" style="display: none; flex-direction: column; text-align: center;">
+            <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 10px;">
+                📸 Hãy CHỤP MÀN HÌNH giỏ hàng này lại nhé!
+            </p>
+            <button class="btn-primary" onclick="moZaloGuiAnh()" style="width: 100%;">Đã chụp xong -> Gửi Cô 9</button>
         </div>
     </div>
+</div>
 
     <div id="modal-xac-nhan" class="modal" style="z-index: 3000;">
         <div class="modal-content" style="max-width: 350px; text-align: center; padding-top: 30px;">
@@ -87,13 +116,18 @@
             </div>
         </div>
     </div>
+    
+    <div id="modal-huong-dan-copy" class="modal" style="z-index: 5000;">
+    <div class="modal-content" style="max-width: 400px; text-align: center; padding: 30px 20px;">
+        <div style="font-size: 3rem;">📋✅</div>
+        <h3>Đã sao chép đơn hàng!</h3>
+        <p style="margin: 20px 0;">Bạn hãy <b>"Dán" (Paste)</b> vào khung chat với <b>Cô 9</b> nhé!</p>
+        <button class="btn-primary" onclick="moZaloGuiAnh()" style="width: 100%;">Mở Zalo Ngay</button>
+    </div>
+</div>
 
     <div id="toast-box"></div>
 
     <script src="main.js"></script>
 </body>
 </html>
-
-
-
-

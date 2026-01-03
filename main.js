@@ -29,7 +29,10 @@ function showToast(message, type = 'success') {
 
 // --- 3. PHÂN TRANG ---
 function hienThiTrang(page) {
-    const tongSoTrang = Math.ceil(danhSachBanh.length / soMonMoiTrang);
+    // Lọc bỏ món Signature ra khỏi danh sách phân trang
+    const danhSachLoc = danhSachBanh.filter(banh => banh.id !== 1); 
+
+    const tongSoTrang = Math.ceil(danhSachLoc.length / soMonMoiTrang);
     if (page < 1) page = 1;
     if (page > tongSoTrang) page = tongSoTrang;
     trangHienTai = page;
@@ -41,7 +44,7 @@ function hienThiTrang(page) {
 
     const batDau = (page - 1) * soMonMoiTrang;
     const ketThuc = page * soMonMoiTrang;
-    const banhTrangNay = danhSachBanh.slice(batDau, ketThuc);
+    const banhTrangNay = danhSachLoc.slice(batDau, ketThuc);
 
     banhTrangNay.forEach(banh => {
         khungSanPham.innerHTML += `
@@ -156,7 +159,9 @@ function thanhToanZalo() {
         showToast("Giỏ hàng trống trơn!", "error");
         return;
     }
-    let loiNhan = "Chào shop, mình muốn đặt đơn này:\n";
+
+    // 1. Soạn nội dung tin nhắn
+    let loiNhan = "Mình muốn đặt đơn này:\n";
     let tong = 0;
     gioHang.forEach(sp => {
         let thanhTien = sp.gia * sp.soLuong;
@@ -165,10 +170,49 @@ function thanhToanZalo() {
     });
     loiNhan += `\nTổng cộng: ${tong.toLocaleString()}đ`;
 
+    // 2. Thử nghiệm Copy tự động
     navigator.clipboard.writeText(loiNhan).then(() => {
-        showToast("Đã copy đơn hàng!", "success");
-        setTimeout(() => window.open("https://zalo.me/0908169853", "_blank"), 1000);
+        // --- TRƯỜNG HỢP A: COPY THÀNH CÔNG ---
+        dongGioHang();
+        document.getElementById('modal-huong-dan-copy').style.display = 'block';
+    }).catch(err => {
+        // --- TRƯỜNG HỢP B: COPY THẤT BẠI (MÁY CHẶN) ---
+        console.warn("Máy chặn copy, chuyển sang chế độ chụp ảnh.");
+        batCheDoChupAnh();
     });
+}
+
+function batCheDoChupAnh() {
+    // Ẩn các thành phần thừa để màn hình sạch cho khách chụp
+    document.getElementById('nut-dong-gio').style.display = 'none';
+    document.getElementById('actions-mac-dinh').style.display = 'none';
+    
+    // Hiện khu vực nhắc chụp ảnh
+    document.getElementById('actions-chup-anh').style.display = 'flex';
+    
+    // Cuộn lên đầu để chụp đủ danh sách
+    document.querySelector('.modal-content').scrollTop = 0;
+}
+
+function moZaloGuiAnh() {
+    // Tắt các modal
+    document.getElementById('modal-huong-dan-copy').style.display = 'none';
+    
+    // Chỉ reset giao diện CHỤP ẢNH nếu nó đang hiển thị
+    if (document.getElementById('actions-chup-anh').style.display === 'flex') {
+        huyCheDoChupAnh();
+    }
+    
+    dongGioHang();
+
+    // Chuyển hướng sang Zalo
+    window.location.href = "https://zalo.me/0908169853";
+}
+
+function huyCheDoChupAnh() {
+    document.getElementById('nut-dong-gio').style.display = 'block';
+    document.getElementById('actions-mac-dinh').style.display = 'flex';
+    document.getElementById('actions-chup-anh').style.display = 'none';
 }
 
 // Xử lý đóng modal khi click ra ngoài
@@ -182,4 +226,3 @@ window.onclick = function(event) {
 document.addEventListener("DOMContentLoaded", function() {
     hienThiTrang(1);
 });
-

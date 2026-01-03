@@ -21,7 +21,7 @@ body {
 
 /* --- HEADER --- */
 header {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517433670267-08bbd4be890f?q=80&w=1920'); 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/Background.png'); 
     background-size: cover; background-position: center;
     color: #fff; height: 60vh;
     display: flex; align-items: center; justify-content: center;
@@ -123,4 +123,84 @@ footer hr { border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px
 
 header .btn-primary {
     margin-top: 20px; /* Số càng lớn nút càng tụt xuống thấp */
+}
+
+#actions-chup-anh p {
+    animation: shake 0.5s;
+    background-color: #fff3cd; 
+    padding: 10px;
+    border-radius: 5px;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* --- SIGNATURE SECTION --- */
+.signature-section {
+    padding: 60px 0;
+    background-color: #fff; /* Nền trắng để nổi bật trên nền hồng của menu */
+}
+
+.signature-title {
+    font-family: var(--font-heading);
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.signature-card {
+    display: flex;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(211, 84, 0, 0.2); /* Đổ bóng màu cam nhẹ */
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid var(--primary-color);
+    transition: transform 0.3s;
+}
+
+.signature-card:hover { transform: scale(1.02); }
+
+.signature-img {
+    flex: 1;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    font-size: 1.5rem;
+}
+
+.signature-info {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.signature-info h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.signature-btn {
+    font-size: 1.1rem;
+    padding: 15px;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 768px) {
+    .signature-card { flex-direction: column; }
+    .signature-img { min-height: 200px; }
+    .signature-info { text-align: center; }
 }
