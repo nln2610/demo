@@ -167,7 +167,7 @@ function thanhToanZalo() {
 
     navigator.clipboard.writeText(loiNhan).then(() => {
         showToast("Đã copy đơn hàng!", "success");
-        setTimeout(() => window.open("https://zalo.me/0909xxxxxx", "_blank"), 1000);
+        setTimeout(() => window.open("https://zalo.me/0908169853", "_blank"), 1000);
     });
 }
 
@@ -182,3 +182,4 @@ window.onclick = function(event) {
 document.addEventListener("DOMContentLoaded", function() {
     hienThiTrang(1);
 });
+
