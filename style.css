@@ -133,7 +133,7 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
 }
 .zalo-floating-btn img {
     width: 40px; height: 40px;
-    object-fit: contain; /* Ảnh giữ nguyên tỉ lệ */
+    object-fit: contain; 
 }
 @keyframes pulse-blue {
     0% { box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7); }
@@ -173,4 +173,96 @@ header p { font-size: 1.2rem; margin-bottom: 20px; }
     background-color: #f1f1f1; color: #333;
     padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer;
 }
+
 .modal-actions .btn-secondary:hover { background-color: #e0e0e0; }
+
+footer {
+    background-color: #2c3e50; 
+    color: #ecf0f1; 
+    padding: 50px 0 20px 0;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1; 
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+    padding-bottom: 20px;
+}
+
+.footer-section h3 {
+    color: var(--primary-color); /* Màu cam chủ đạo */
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Style cho danh sách link */
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px; /* Hiệu ứng đẩy nhẹ khi di chuột */
+}
+
+/* Style cho link mxh */
+.social-links a {
+    display: inline-block;
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--primary-color);
+}
+
+/* Đường gạch ngang và dòng bản quyền */
+footer hr {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 20px 0;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Chỉnh sửa cho điện thoại */
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center; /* Trên điện thoại thì canh giữa cho đẹp */
+    }
+    
+    .footer-section ul li a:hover {
+        padding-left: 0; /* Tắt hiệu ứng đẩy trên đt */
+    }
+}
